@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Recommendation & Yield Prediction</h1>
+        
+        <div id="model-status" class="alert">
+            {% if models_loaded %}
+                Models loaded successfully
+            {% else %}
+                Models failed to load. Please check server logs.
+            {% endif %}
+        </div>
+        
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="N">Nitrogen (N):</label>
+                <input type="number" id="N" name="N" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="P">Phosphorus (P):</label>
+                <input type="number" id="P" name="P" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="K">Potassium (K):</label>
+                <input type="number" id="K" name="K" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="temperature">Temperature (°C):</label>
+                <input type="number" id="temperature" name="temperature" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="humidity">Humidity (%):</label>
+                <input type="number" id="humidity" name="humidity" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="ph">Soil pH:</label>
+                <input type="number" id="ph" name="ph" step="0.1" min="0" max="14" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fertilizer">Fertilizer (kg/ha):</label>
+                <input type="number" id="fertilizer" name="fertilizer" step="0.1" required>
+            </div>
+            
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <div class="result-item">
+                <strong>Recommended Crop:</strong> <span id="recommended-crop"></span>
+            </div>
+            <div class="result-item">
+                <strong>Predicted Yield:</strong> <span id="predicted-yield"></span> tons/ha
+            </div>
+        </div>
+        
+        <div id="error" class="alert hidden"></div>
+    </div>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
