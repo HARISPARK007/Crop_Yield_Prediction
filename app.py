@@ -12,7 +12,7 @@ def load_models():
         'status': False,
         'error': None
     }
-    
+    #hello
     try:
         # Load crop models
         models['crop_model'] = load_model('models/crop_model.h5')
